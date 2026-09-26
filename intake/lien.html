@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lien Services | LB Title</title>
+
+  <meta
+    name="description"
+    content="Start a mechanical lien or tow lien service request with LB Title."
+  >
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+
+      <a class="logo" href="../index.html" aria-label="LB Title home">
+        <span class="logo-lb">LB</span>
+        <span class="logo-title">TITLE</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../dealer/index.html">Dealer Center</a>
+        <a href="../index.html#other-services">Other Services</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+
+      <a class="nav-action" href="tel:+13054826302">
+        Call LB Title
+      </a>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="intake-hero">
+      <div class="container">
+
+        <a class="back-link" href="../index.html#services">
+          ← Back to Services
+        </a>
+
+        <p class="eyebrow">
+          LB Title • Lien Services
+        </p>
+
+        <h1>
+          Start a Lien Request
+        </h1>
+
+        <p>
+          Choose the lien service you need and provide the
+          information requested below.
+        </p>
+
+      </div>
+    </section>
+
+
+    <section class="intake-section">
+      <div class="container intake-layout">
+
+        <form
+          class="intake-form"
+          id="lien-form"
+          action="https://submit-form.com/Pg36aKa8d"
+          method="POST"
+        >
+        <!-- FORMSPARK CONFIGURATION -->
+        <input
+          type="hidden"
+          name="_redirect"
+          value="https://lbtitle.co/success.html"
+        >
+
+        <input
+          type="hidden"
+          name="_append"
+          value="false"
+        >
+          <!-- SERVICE TYPE -->
+          <fieldset class="form-section">
+
+            <legend>
+              1. Choose your lien service
+            </legend>
+
+            <p class="form-help">
+              Select one option to continue.
+            </p>
+
+
+            <div class="service-choice-grid">
+
+              <label class="service-choice">
+
+                <input
+                  type="radio"
+                  name="lien_type"
+                  value="mechanical"
+                  required
+                >
+
+                <span>
+                  <strong>Mechanical Lien</strong>
+                  <small>
+                    Vehicle information and MV number required.
+                  </small>
+                </span>
+
+              </label>
+
+
+              <label class="service-choice">
+
+                <input
+                  type="radio"
+                  name="lien_type"
+                  value="tow"
+                  required
+                >
+
+                <span>
+                  <strong>Tow Lien</strong>
+                  <small>
+                    Business information and LT number required.
+                  </small>
+                </span>
+
+              </label>
+
+            </div>
+
+          </fieldset>
+
+
+          <!-- BASIC INFORMATION -->
+          <fieldset class="form-section">
+
+            <legend>
+              2. Basic Information
+            </legend>
+
+            <div class="form-grid">
+
+              <div class="form-field">
+                <label for="customer-name">
+                  Full Name
+                </label>
+
+                <input
+                  id="customer-name"
+                  name="customer_name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                >
+              </div>
+
+
+              <div class="form-field">
+                <label for="customer-email">
+                  Email
+                </label>
+
+                <input
+                  id="customer-email"
+                  name="customer_email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                >
+              </div>
+
+
+              <div class="form-field form-field-full">
+                <label for="customer-address">
+                  Address
+                </label>
+
+                <input
+                  id="customer-address"
+                  name="customer_address"
+                  type="text"
+                  autocomplete="street-address"
+                  required
+                >
+              </div>
+
+
+              <div class="form-field form-field-full">
+                <label for="summary">
+                  Tell us about the situation
+                </label>
+
+                <textarea
+                  id="summary"
+                  name="summary"
+                  rows="6"
+                  placeholder="Briefly describe what happened and what you need help with."
+                  required
+                ></textarea>
+              </div>
+
+            </div>
+
+          </fieldset>
+
+
+          <!-- MECHANICAL LIEN -->
+          <fieldset
+            class="form-section conditional-section"
+            id="mechanical-fields"
+            hidden
+          >
+
+            <legend>
+              3. Vehicle Information
+            </legend>
+
+            <div class="form-grid">
+
+              <div class="form-field form-field-full">
+                <label for="vin">
+                  VIN
+                </label>
+
+                <input
+                  id="vin"
+                  name="vin"
+                  type="text"
+                  autocomplete="off"
+                >
+              </div>
+
+
+              <div class="form-field">
+                <label for="vehicle-year">
+                  Year
+                </label>
+
+                <input
+                  id="vehicle-year"
+                  name="vehicle_year"
+                  type="text"
+                  inputmode="numeric"
+                >
+              </div>
+
+
+              <div class="form-field">
+                <label for="vehicle-make">
+                  Make
+                </label>
+
+                <input
+                  id="vehicle-make"
+                  name="vehicle_make"
+                  type="text"
+                >
+              </div>
+
+
+              <div class="form-field">
+                <label for="vehicle-model">
+                  Model
+                </label>
+
+                <input
+                  id="vehicle-model"
+                  name="vehicle_model"
+                  type="text"
+                >
+              </div>
+
+
+              <div class="form-field">
+                <label for="mv-number">
+                  MV Number
+                </label>
+
+                <input
+                  id="mv-number"
+                  name="mv_number"
+                  type="text"
+                >
+              </div>
+
+            </div>
+
+          </fieldset>
+
+
+          <!-- TOW LIEN -->
+          <fieldset
+            class="form-section conditional-section"
+            id="tow-fields"
+            hidden
+          >
+
+            <legend>
+              3. Business Information
+            </legend>
+
+            <p class="form-help">
+              Provide the business information associated with
+              this tow lien request.
+            </p>
+
+
+            <div class="form-grid">
+
+              <div class="form-field form-field-full">
+                <label for="business-name">
+                  Business Name
+                </label>
+
+                <input
+                  id="business-name"
+                  name="business_name"
+                  type="text"
+                  autocomplete="organization"
+                >
+              </div>
+
+
+              <div class="form-field form-field-full">
+                <label for="business-address">
+                  Business Address
+                </label>
+
+                <input
+                  id="business-address"
+                  name="business_address"
+                  type="text"
+                  autocomplete="street-address"
+                >
+              </div>
+
+
+              <div class="form-field form-field-full">
+                <label for="lt-number">
+                  LT Number
+                </label>
+
+                <input
+                  id="lt-number"
+                  name="lt_number"
+                  type="text"
+                >
+              </div>
+
+            </div>
+
+          </fieldset>
+
+
+          <!-- SUBMISSION -->
+          <div
+            class="form-submit"
+            id="form-submit"
+            hidden
+          >
+
+            <div>
+              <strong>
+                Ready to continue?
+              </strong>
+
+              <p>
+                Review your information before submitting your request.
+              </p>
+            </div>
+
+            <button type="submit" class="button primary">
+              Submit Lien Request
+            </button>
+
+          </div>
+
+        </form>
+
+
+        <!-- SIDE PANEL -->
+        <aside class="intake-sidebar">
+
+          <div class="sidebar-card">
+
+            <p class="eyebrow">
+              Need Help?
+            </p>
+
+            <h2>
+              Talk with LB Title
+            </h2>
+
+            <p>
+              If you're unsure which lien service you need,
+              contact LB Title before submitting your request.
+            </p>
+
+            <a
+              class="button primary"
+              href="tel:+13054826302"
+            >
+              Call (305) 482-6302
+            </a>
+
+            <a
+              class="button secondary"
+              href="sms:+13054826302"
+            >
+              Text LB Title
+            </a>
+
+            <a
+              class="sidebar-email"
+              href="mailto:lbtitle01@gmail.com"
+            >
+              lbtitle01@gmail.com
+            </a>
+
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="container footer-content">
+
+      <div class="footer-brand">
+        <strong>LB TITLE</strong>
+        <p>Automotive Services Made Simple</p>
+      </div>
+
+      <div class="footer-contact">
+        <a href="tel:+13054826302">
+          (305) 482-6302
+        </a>
+
+        <a href="mailto:lbtitle01@gmail.com">
+          lbtitle01@gmail.com
+        </a>
+      </div>
+
+      <div class="powered-by">
+        Powered by <strong>VALRYN OS</strong>
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script src="../assets/js/main.js"></script>
+
+</body>
+</html>
