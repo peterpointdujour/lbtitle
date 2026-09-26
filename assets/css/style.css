@@ -1839,3 +1839,46 @@ a:focus-visible {
   }
 
 }
+
+
+/* =========================================================
+   LB TITLE LOGO
+   ========================================================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
+.site-logo {
+  display: block;
+
+  width: 230px;
+  max-width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+/* ---------- LOGO RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+
+  .site-logo {
+    width: 200px;
+  }
+
+}
+
+
+@media (max-width: 560px) {
+
+  .site-logo {
+    width: 165px;
+  }
+
+}
