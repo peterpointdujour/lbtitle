@@ -364,93 +364,135 @@ if (lbRoomShell) {
 
 }
 
-
-
 /* =========================================================
-   LB CONTACT AMBIENT MESSAGE SYSTEM
-   Gate 2A rotating prototype
+   LB AMBIENT ROOM ENGINE
+   Shared room-message controller
    ========================================================= */
 
 if (lbRoomShell) {
 
-  const contactMessage =
-    document.querySelector(
-      '[data-room-message="contact"]'
-    );
+  const ambientRooms = {
 
-  const contactRoom =
-    document.querySelector(
-      '[data-room="contact"]'
-    );
+    contact: {
 
-  let contactMessageTimer = null;
-  let contactMessageIndex = 0;
+      greeting(hour) {
+
+        if (hour < 12) {
+          return "Good morning. We're here to help.";
+        }
+
+        if (hour < 17) {
+          return "Good afternoon. We're here to help.";
+        }
+
+        return "Good evening. We're here to help.";
+      },
+
+      messages: [
+        "Real people. Real support.",
+        "Questions are where solutions begin.",
+        "Title. Lien. Tag. Dealer. One place.",
+        "A smoother road starts with the right next step.",
+        "Powered by VALRYN OS.",
+        {
+          text: "Make them ask how.",
+          signature: true
+        },
+        "LB TITLE · EST. 2014"
+      ]
+
+    },
 
 
-  function getTimeGreeting() {
+    title: {
 
-    const hour =
-      new Date().getHours();
+      greeting(hour) {
 
-    if (hour < 12) {
-      return "Good morning. We're here to help.";
+        if (hour < 12) {
+          return "Good morning. Let's get the paperwork moving.";
+        }
+
+        if (hour < 17) {
+          return "Good afternoon. Title help starts here.";
+        }
+
+        return "Good evening. Let's get your next step clear.";
+      },
+
+      messages: [
+        "Ownership starts with the right paperwork.",
+        "Transfer. Replace. Rebuild.",
+        "Clear paperwork. Clear next steps.",
+        "Your vehicle. Your title. Handled.",
+        "Powered by VALRYN OS.",
+        {
+          text: "Make them ask how.",
+          signature: true
+        },
+        "LB TITLE · EST. 2014"
+      ]
+
     }
 
-    if (hour < 17) {
-      return "Good afternoon. We're here to help.";
+  };
+
+
+  const ambientState = new Map();
+
+
+  function normalizeAmbientMessage(item) {
+
+    if (typeof item === "string") {
+      return {
+        text: item,
+        signature: false
+      };
     }
 
-    return "Good evening. We're here to help.";
+    return {
+      text: item.text,
+      signature: Boolean(item.signature)
+    };
 
   }
 
 
-  function getContactMessages() {
+  function getAmbientMessages(roomName) {
+
+    const config =
+      ambientRooms[roomName];
+
+    if (!config) {
+      return [];
+    }
+
+    const hour =
+      new Date().getHours();
 
     return [
       {
-        text: getTimeGreeting(),
+        text: config.greeting(hour),
         signature: false
       },
-      {
-        text: "Real people. Real support.",
-        signature: false
-      },
-      {
-        text: "Questions are where solutions begin.",
-        signature: false
-      },
-      {
-        text: "Title. Lien. Tag. Dealer. One place.",
-        signature: false
-      },
-      {
-        text: "A smoother road starts with the right next step.",
-        signature: false
-      },
-      {
-        text: "Powered by VALRYN OS.",
-        signature: false
-      },
-      {
-        text: "Make them ask how.",
-        signature: true
-      },
-      {
-        text: "LB TITLE · EST. 2014",
-        signature: false
-      }
+      ...config.messages.map(
+        normalizeAmbientMessage
+      )
     ];
 
   }
 
 
-  function contactIsActive() {
+  function roomIsActive(roomName) {
+
+    const room =
+      document.querySelector(
+        `[data-room="${roomName}"]`
+      );
 
     return Boolean(
-      contactRoom &&
-      !contactRoom.hidden &&
-      contactRoom.classList.contains(
+      room &&
+      !room.hidden &&
+      room.classList.contains(
         "is-active"
       )
     );
@@ -458,86 +500,94 @@ if (lbRoomShell) {
   }
 
 
-  function clearContactTimer() {
+  function clearAmbientTimer(roomName) {
 
-    if (contactMessageTimer) {
-      clearTimeout(contactMessageTimer);
-      contactMessageTimer = null;
+    const state =
+      ambientState.get(roomName);
+
+    if (
+      state &&
+      state.timer
+    ) {
+      clearTimeout(state.timer);
+      state.timer = null;
     }
 
   }
 
 
-  function renderContactMessage() {
+  function renderAmbientMessage(roomName) {
+
+    const state =
+      ambientState.get(roomName);
 
     if (
-      !contactMessage ||
-      !contactIsActive()
+      !state ||
+      !state.element ||
+      !roomIsActive(roomName)
     ) {
-      clearContactTimer();
+      clearAmbientTimer(roomName);
       return;
     }
 
-
     const messages =
-      getContactMessages();
+      getAmbientMessages(roomName);
+
+    if (!messages.length) {
+      return;
+    }
 
     const message =
       messages[
-        contactMessageIndex %
+        state.index %
         messages.length
       ];
 
     const copy =
-      contactMessage.querySelector(
+      state.element.querySelector(
         ".room-dynamic-copy"
       );
 
-
-    contactMessage.classList.add(
+    state.element.classList.add(
       "is-faded"
     );
 
-
-    contactMessageTimer =
+    state.timer =
       setTimeout(
         () => {
 
           if (
             !copy ||
-            !contactIsActive()
+            !roomIsActive(roomName)
           ) {
-            clearContactTimer();
+            clearAmbientTimer(roomName);
             return;
           }
-
 
           copy.textContent =
             message.text;
 
-          contactMessage.classList.toggle(
+          state.element.classList.toggle(
             "is-signature",
             message.signature
           );
 
-          contactMessage.classList.remove(
+          state.element.classList.remove(
             "is-faded"
           );
 
-
-          contactMessageIndex =
+          state.index =
             (
-              contactMessageIndex + 1
+              state.index + 1
             ) % messages.length;
 
-
-          /*
-           * Message remains visible for
-           * approximately 14 seconds.
-           */
-          contactMessageTimer =
+          state.timer =
             setTimeout(
-              renderContactMessage,
+              () => {
+                renderAmbientMessage(
+                  roomName
+                );
+              },
               14000
             );
 
@@ -548,290 +598,113 @@ if (lbRoomShell) {
   }
 
 
-  function startContactMessages() {
+  function startAmbientRoom(roomName) {
 
-    clearContactTimer();
+    const state =
+      ambientState.get(roomName);
 
-    contactMessageIndex = 0;
-
-    if (!contactMessage) {
+    if (!state || !state.element) {
       return;
     }
 
-    /*
-     * First greeting appears immediately
-     * when entering Contact.
-     */
-    const copy =
-      contactMessage.querySelector(
-        ".room-dynamic-copy"
-      );
+    clearAmbientTimer(roomName);
+
+    const messages =
+      getAmbientMessages(roomName);
+
+    if (!messages.length) {
+      return;
+    }
 
     const first =
-      getContactMessages()[0];
+      messages[0];
+
+    const copy =
+      state.element.querySelector(
+        ".room-dynamic-copy"
+      );
 
     if (copy) {
       copy.textContent =
         first.text;
     }
 
-    contactMessage.classList.remove(
+    state.element.classList.toggle(
       "is-signature",
+      first.signature
+    );
+
+    state.element.classList.remove(
       "is-faded"
     );
 
-    contactMessageIndex = 1;
+    state.index =
+      messages.length > 1 ? 1 : 0;
 
-    contactMessageTimer =
+    state.timer =
       setTimeout(
-        renderContactMessage,
-        14000
-      );
-
-  }
-
-
-  /*
-   * Start when Contact is selected.
-   */
-  document
-    .querySelectorAll(
-      '[data-room-target="contact"]'
-    )
-    .forEach((button) => {
-
-      button.addEventListener(
-        "click",
-        startContactMessages
-      );
-
-    });
-
-
-  /*
-   * Direct load:
-   * /#contact
-   *
-   * openRoom() has already initialized
-   * the room before this block runs.
-   */
-  if (
-    window.location.hash === "#contact"
-  ) {
-    startContactMessages();
-  }
-
-}
-
-
-/* =========================================================
-   LB TITLE AMBIENT MESSAGE SYSTEM
-   ========================================================= */
-
-if (lbRoomShell) {
-
-  const titleMessage =
-    document.querySelector(
-      '[data-room-message="title"]'
-    );
-
-  const titleRoom =
-    document.querySelector(
-      '[data-room="title"]'
-    );
-
-  let titleMessageTimer = null;
-  let titleMessageIndex = 0;
-
-
-  function getTitleGreeting() {
-
-    const hour = new Date().getHours();
-
-    if (hour < 12) {
-      return "Good morning. Let's get the paperwork moving.";
-    }
-
-    if (hour < 17) {
-      return "Good afternoon. Title help starts here.";
-    }
-
-    return "Good evening. Let's get your next step clear.";
-
-  }
-
-
-  function getTitleMessages() {
-
-    return [
-      {
-        text: getTitleGreeting(),
-        signature: false
-      },
-      {
-        text: "Ownership starts with the right paperwork.",
-        signature: false
-      },
-      {
-        text: "Transfer. Replace. Rebuild.",
-        signature: false
-      },
-      {
-        text: "Clear paperwork. Clear next steps.",
-        signature: false
-      },
-      {
-        text: "Your vehicle. Your title. Handled.",
-        signature: false
-      },
-      {
-        text: "Powered by VALRYN OS.",
-        signature: false
-      },
-      {
-        text: "Make them ask how.",
-        signature: true
-      },
-      {
-        text: "LB TITLE · EST. 2014",
-        signature: false
-      }
-    ];
-
-  }
-
-
-  function titleIsActive() {
-
-    return Boolean(
-      titleRoom &&
-      !titleRoom.hidden &&
-      titleRoom.classList.contains("is-active")
-    );
-
-  }
-
-
-  function clearTitleTimer() {
-
-    if (titleMessageTimer) {
-      clearTimeout(titleMessageTimer);
-      titleMessageTimer = null;
-    }
-
-  }
-
-
-  function renderTitleMessage() {
-
-    if (!titleMessage || !titleIsActive()) {
-      clearTitleTimer();
-      return;
-    }
-
-    const messages = getTitleMessages();
-
-    const message =
-      messages[
-        titleMessageIndex % messages.length
-      ];
-
-    const copy =
-      titleMessage.querySelector(
-        ".room-dynamic-copy"
-      );
-
-    titleMessage.classList.add("is-faded");
-
-
-    titleMessageTimer =
-      setTimeout(() => {
-
-        if (!copy || !titleIsActive()) {
-          clearTitleTimer();
-          return;
-        }
-
-        copy.textContent = message.text;
-
-        titleMessage.classList.toggle(
-          "is-signature",
-          message.signature
-        );
-
-        titleMessage.classList.remove(
-          "is-faded"
-        );
-
-        titleMessageIndex =
-          (titleMessageIndex + 1) %
-          messages.length;
-
-        titleMessageTimer =
-          setTimeout(
-            renderTitleMessage,
-            14000
+        () => {
+          renderAmbientMessage(
+            roomName
           );
-
-      }, 900);
-
-  }
-
-
-  function startTitleMessages() {
-
-    clearTitleTimer();
-
-    titleMessageIndex = 0;
-
-    if (!titleMessage) {
-      return;
-    }
-
-    const copy =
-      titleMessage.querySelector(
-        ".room-dynamic-copy"
-      );
-
-    const first =
-      getTitleMessages()[0];
-
-    if (copy) {
-      copy.textContent = first.text;
-    }
-
-    titleMessage.classList.remove(
-      "is-signature",
-      "is-faded"
-    );
-
-    titleMessageIndex = 1;
-
-    titleMessageTimer =
-      setTimeout(
-        renderTitleMessage,
+        },
         14000
       );
 
   }
 
 
-  document
-    .querySelectorAll(
-      '[data-room-target="title"]'
-    )
-    .forEach((button) => {
+  Object.keys(
+    ambientRooms
+  ).forEach((roomName) => {
 
-      button.addEventListener(
-        "click",
-        startTitleMessages
+    const element =
+      document.querySelector(
+        `[data-room-message="${roomName}"]`
       );
 
-    });
+    ambientState.set(
+      roomName,
+      {
+        element,
+        timer: null,
+        index: 0
+      }
+    );
 
 
-  if (window.location.hash === "#title") {
-    startTitleMessages();
+    document
+      .querySelectorAll(
+        `[data-room-target="${roomName}"]`
+      )
+      .forEach((button) => {
+
+        button.addEventListener(
+          "click",
+          () => {
+            startAmbientRoom(
+              roomName
+            );
+          }
+        );
+
+      });
+
+  });
+
+
+  const initialRoom =
+    window.location.hash
+      .replace("#", "")
+      .trim();
+
+  if (
+    initialRoom &&
+    ambientRooms[initialRoom]
+  ) {
+    startAmbientRoom(
+      initialRoom
+    );
   }
 
 }
