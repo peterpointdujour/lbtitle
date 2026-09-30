@@ -364,3 +364,262 @@ if (lbRoomShell) {
 
 }
 
+
+
+/* =========================================================
+   LB CONTACT AMBIENT MESSAGE SYSTEM
+   Gate 2A rotating prototype
+   ========================================================= */
+
+if (lbRoomShell) {
+
+  const contactMessage =
+    document.querySelector(
+      '[data-room-message="contact"]'
+    );
+
+  const contactRoom =
+    document.querySelector(
+      '[data-room="contact"]'
+    );
+
+  let contactMessageTimer = null;
+  let contactMessageIndex = 0;
+
+
+  function getTimeGreeting() {
+
+    const hour =
+      new Date().getHours();
+
+    if (hour < 12) {
+      return "Good morning. We're here to help.";
+    }
+
+    if (hour < 17) {
+      return "Good afternoon. We're here to help.";
+    }
+
+    return "Good evening. We're here to help.";
+
+  }
+
+
+  function getContactMessages() {
+
+    return [
+      {
+        text: getTimeGreeting(),
+        signature: false
+      },
+      {
+        text: "Real people. Real support.",
+        signature: false
+      },
+      {
+        text: "Questions are where solutions begin.",
+        signature: false
+      },
+      {
+        text: "Title. Lien. Tag. Dealer. One place.",
+        signature: false
+      },
+      {
+        text: "A smoother road starts with the right next step.",
+        signature: false
+      },
+      {
+        text: "Powered by VALRYN OS.",
+        signature: false
+      },
+      {
+        text: "Make them ask how.",
+        signature: true
+      },
+      {
+        text: "LB TITLE · EST. 2014",
+        signature: false
+      }
+    ];
+
+  }
+
+
+  function contactIsActive() {
+
+    return Boolean(
+      contactRoom &&
+      !contactRoom.hidden &&
+      contactRoom.classList.contains(
+        "is-active"
+      )
+    );
+
+  }
+
+
+  function clearContactTimer() {
+
+    if (contactMessageTimer) {
+      clearTimeout(contactMessageTimer);
+      contactMessageTimer = null;
+    }
+
+  }
+
+
+  function renderContactMessage() {
+
+    if (
+      !contactMessage ||
+      !contactIsActive()
+    ) {
+      clearContactTimer();
+      return;
+    }
+
+
+    const messages =
+      getContactMessages();
+
+    const message =
+      messages[
+        contactMessageIndex %
+        messages.length
+      ];
+
+    const copy =
+      contactMessage.querySelector(
+        ".room-dynamic-copy"
+      );
+
+
+    contactMessage.classList.add(
+      "is-faded"
+    );
+
+
+    contactMessageTimer =
+      setTimeout(
+        () => {
+
+          if (
+            !copy ||
+            !contactIsActive()
+          ) {
+            clearContactTimer();
+            return;
+          }
+
+
+          copy.textContent =
+            message.text;
+
+          contactMessage.classList.toggle(
+            "is-signature",
+            message.signature
+          );
+
+          contactMessage.classList.remove(
+            "is-faded"
+          );
+
+
+          contactMessageIndex =
+            (
+              contactMessageIndex + 1
+            ) % messages.length;
+
+
+          /*
+           * Message remains visible for
+           * approximately 14 seconds.
+           */
+          contactMessageTimer =
+            setTimeout(
+              renderContactMessage,
+              14000
+            );
+
+        },
+        900
+      );
+
+  }
+
+
+  function startContactMessages() {
+
+    clearContactTimer();
+
+    contactMessageIndex = 0;
+
+    if (!contactMessage) {
+      return;
+    }
+
+    /*
+     * First greeting appears immediately
+     * when entering Contact.
+     */
+    const copy =
+      contactMessage.querySelector(
+        ".room-dynamic-copy"
+      );
+
+    const first =
+      getContactMessages()[0];
+
+    if (copy) {
+      copy.textContent =
+        first.text;
+    }
+
+    contactMessage.classList.remove(
+      "is-signature",
+      "is-faded"
+    );
+
+    contactMessageIndex = 1;
+
+    contactMessageTimer =
+      setTimeout(
+        renderContactMessage,
+        14000
+      );
+
+  }
+
+
+  /*
+   * Start when Contact is selected.
+   */
+  document
+    .querySelectorAll(
+      '[data-room-target="contact"]'
+    )
+    .forEach((button) => {
+
+      button.addEventListener(
+        "click",
+        startContactMessages
+      );
+
+    });
+
+
+  /*
+   * Direct load:
+   * /#contact
+   *
+   * openRoom() has already initialized
+   * the room before this block runs.
+   */
+  if (
+    window.location.hash === "#contact"
+  ) {
+    startContactMessages();
+  }
+
+}
+
