@@ -1,519 +1,909 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>LB Title | Lien, Title, Tag & Dealer Services</title>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    LB Title | Automotive Services
+  </title>
 
   <meta
     name="description"
-    content="LB Title provides automotive lien, title, tag and dealer-support services."
+    content="LB Title provides automotive title, lien, tag and dealer services."
   >
 
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link
+    rel="stylesheet"
+    href="assets/css/style.css"
+  >
+
 </head>
 
-<body>
 
-  <header class="site-header">
-    <div class="container nav">
+<body class="lb-shell-page">
 
-      <a class="logo" href="index.html" aria-label="LB Title home">
-        <img
-          src="assets/images/lb-title-logo.png"
-          alt="LB Title"
-          class="site-logo"
+
+  <div
+    class="lb-app"
+    id="lb-room-shell"
+  >
+
+
+    <!-- ================================================
+         SIDEBAR
+         ================================================ -->
+
+    <aside class="lb-sidebar">
+
+
+      <!-- BRAND -->
+
+      <div class="lb-sidebar-brand">
+
+        <button
+          class="lb-brand-button"
+          type="button"
+          data-room-target="home"
+          aria-label="LB Title Home"
         >
-      </a>
 
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="dealer/index.html">Dealer Center</a>
-        <a href="#other-services">Other Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
+          <img
+            src="assets/images/lb-title-logo.png"
+            alt="LB Title"
+          >
 
-      <a class="nav-action" href="#request">
-        Start a Request
-      </a>
+        </button>
 
-    </div>
-  </header>
-
-
-  <main>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-content">
-
-        <p class="eyebrow">
-          Automotive Services Made Simple
+        <p>
+          EST. 2014
         </p>
-
-        <h1>
-          Your automotive paperwork.
-          <span>Handled.</span>
-        </h1>
-
-        <p class="hero-copy">
-          LB Title provides straightforward lien, title, tag and
-          dealer-support services for vehicle owners and automotive
-          businesses.
-        </p>
-
-        <div class="hero-actions">
-
-          <a class="button primary" href="#request">
-            Start a Request
-          </a>
-
-          <a class="button secondary" href="tel:+13054826302">
-            Call (305) 482-6302
-          </a>
-
-        </div>
 
       </div>
-    </section>
 
 
-    <!-- SERVICES -->
-    <section class="services" id="services">
-      <div class="container">
+      <!-- SIDEBAR TOGGLE -->
 
-        <div class="section-heading">
+      <button
+        class="lb-sidebar-toggle"
+        type="button"
+        aria-label="Collapse sidebar"
+        aria-expanded="true"
+        title="Collapse sidebar"
+      >
+        <span aria-hidden="true">‹</span>
+      </button>
 
-          <p class="eyebrow">
-            LB Title Services
-          </p>
 
-          <h2>
-            What do you need help with?
-          </h2>
+      <!-- NAVIGATION -->
 
-          <p>
-            Choose a service area to get started.
-          </p>
+      <nav
+        class="lb-room-nav"
+        aria-label="LB Title services"
+      >
+
+
+        <!-- HOME -->
+
+        <div class="lb-nav-group">
+
+          <button
+            class="lb-room-link"
+            type="button"
+            data-room-target="home"
+          >
+            Home
+          </button>
 
         </div>
 
 
-        <div class="service-grid">
+        <!-- VEHICLE -->
 
-          <!-- LIEN -->
-          <article class="service-card">
+        <div class="lb-nav-group">
 
-            <span class="service-number">
-              01
+          <p class="lb-nav-label">
+            Vehicle
+          </p>
+
+
+          <button
+            class="lb-room-link"
+            type="button"
+            data-room-target="vehicle-check"
+          >
+            Check Vehicle
+
+            <span>
+              Later
             </span>
+          </button>
 
-            <h3>
-              Lien Services
-            </h3>
 
-            <p>
-              Mechanical lien and tow lien services.
-            </p>
+          <button
+            class="lb-room-link"
+            type="button"
+            data-room-target="title"
+          >
+            Title
+          </button>
 
-            <ul>
-              <li>Mechanical Lien</li>
-              <li>Tow Lien</li>
-            </ul>
 
-            <a href="intake/lien.html">
-              Explore Lien Services
+          <button
+            class="lb-room-link"
+            type="button"
+            data-room-target="lien"
+          >
+            Lien
+          </button>
+
+
+          <button
+            class="lb-room-link"
+            type="button"
+            data-room-target="tag"
+          >
+            Tag
+          </button>
+
+        </div>
+
+
+        <!-- BUSINESS -->
+
+        <div class="lb-nav-group">
+
+          <p class="lb-nav-label">
+            Business
+          </p>
+
+
+          <button
+            class="lb-room-link"
+            type="button"
+            data-room-target="dealer"
+          >
+            Dealer Center
+          </button>
+
+        </div>
+
+
+        <!-- COMPANY -->
+
+        <div class="lb-nav-group">
+
+          <p class="lb-nav-label">
+            Company
+          </p>
+
+
+          <button
+            class="lb-room-link"
+            type="button"
+            data-room-target="about"
+          >
+            About LB
+          </button>
+
+
+          <button
+            class="lb-room-link"
+            type="button"
+            data-room-target="reviews"
+          >
+            Reviews
+          </button>
+
+
+          <button
+            class="lb-room-link"
+            type="button"
+            data-room-target="contact"
+          >
+            Contact
+          </button>
+
+        </div>
+
+
+      </nav>
+
+
+      <!-- PERMANENT ACTIONS -->
+
+      <div class="lb-sidebar-actions">
+
+        <a href="tel:+13054826302">
+          Call LB
+        </a>
+
+        <a href="sms:+13054826302">
+          Text LB
+        </a>
+
+      </div>
+
+
+      <div class="lb-sidebar-footer">
+
+        <span>
+          Powered by
+        </span>
+
+        <strong>
+          VALRYN OS
+        </strong>
+
+      </div>
+
+
+    </aside>
+
+
+
+    <!-- ================================================
+         WORKSPACE
+         ================================================ -->
+
+    <main class="lb-workspace">
+
+
+      <!-- ==============================================
+           HOME ROOM
+           ============================================== -->
+
+      <section
+        class="lb-room room-home"
+        data-room="home"
+      >
+
+        <div class="room-shade"></div>
+
+
+        <div class="room-content">
+
+
+          <p class="room-eyebrow">
+            AUTOMOTIVE SERVICES · EST. 2014
+          </p>
+
+
+          <h1>
+            Your automotive
+            paperwork.
+            <span>
+              Handled.
+            </span>
+          </h1>
+
+
+          <p class="room-copy">
+            Title, lien, tag and dealer
+            services for vehicle owners
+            and automotive businesses.
+          </p>
+
+
+          <div class="room-actions">
+
+            <a
+              class="room-button primary"
+              href="tel:+13054826302"
+            >
+              Call LB
             </a>
 
-          </article>
-
-
-          <!-- TITLE -->
-          <article class="service-card">
-
-            <span class="service-number">
-              02
-            </span>
-
-            <h3>
-              Title Services
-            </h3>
-
-            <p>
-              Vehicle title services for common title needs.
-            </p>
-
-            <ul>
-              <li>Title Transfer</li>
-              <li>Duplicate Title</li>
-              <li>Rebuild</li>
-            </ul>
-
-            <a href="intake/title.html">
-              Explore Title Services
+            <a
+              class="room-button secondary"
+              href="sms:+13054826302"
+            >
+              Text LB
             </a>
 
-          </article>
+          </div>
 
 
-          <!-- TAG -->
-          <article class="service-card">
+          <div class="home-proof-grid">
 
-            <span class="service-number">
-              03
+            <div class="home-proof-item">
+
+              <span>EST. 2014</span>
+
+              <strong>
+                Built on experience
+              </strong>
+
+              <p>
+                Serving automotive needs since 2014.
+              </p>
+
+            </div>
+
+
+            <div class="home-proof-item">
+
+              <span>DIRECT HELP</span>
+
+              <strong>
+                Call or text LB
+              </strong>
+
+              <p>
+                Get direct guidance when you need it.
+              </p>
+
+            </div>
+
+
+            <div class="home-proof-item">
+
+              <span>OWNERS + BUSINESS</span>
+
+              <strong>
+                Built for both
+              </strong>
+
+              <p>
+                Helping vehicle owners and automotive professionals.
+              </p>
+
+            </div>
+
+
+            <div class="home-proof-item">
+
+              <span>ONE PLACE</span>
+
+              <strong>
+                Automotive services
+              </strong>
+
+              <p>
+                Title, lien, tag and dealer support.
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==============================================
+           TITLE ROOM
+           ============================================== -->
+
+      <section
+        class="lb-room room-title"
+        data-room="title"
+        hidden
+      >
+
+        <div class="room-shade"></div>
+
+
+        <div class="room-content">
+
+
+          <p class="room-eyebrow">
+            VEHICLE · TITLE
+          </p>
+
+
+          
+
+
+          <p class="room-copy">
+            Get help with common vehicle
+            title paperwork and ownership
+            needs.
+          </p>
+
+
+          <div class="room-tags">
+
+            <span>
+              Title Transfer
             </span>
 
-            <h3>
-              Tag Services
-            </h3>
+            <span>
+              Duplicate Title
+            </span>
 
-            <p>
-              Tag services for vehicle and business needs.
-            </p>
+            <span>
+              Rebuild
+            </span>
 
-            <ul>
-              <li>Transport Tag</li>
-              <li>Paper Tag</li>
-              <li>Tag Transfer</li>
-            </ul>
+          </div>
 
-            <a href="intake/tag.html">
-              Explore Tag Services
+
+          <div class="room-actions">
+
+            <a
+              class="room-button primary"
+              href="intake/title.html"
+            >
+              Start Title Request
             </a>
 
-          </article>
+
+            <a
+              class="room-button secondary"
+              href="sms:+13054826302"
+            >
+              Ask LB
+            </a>
+
+          </div>
 
 
-          <!-- DEALER CENTER -->
-          <article class="service-card dealer-card">
+        </div>
 
-            <span class="service-number">
-              04
+      </section>
+
+
+
+      <!-- ==============================================
+           LIEN ROOM
+           ============================================== -->
+
+      <section
+        class="lb-room room-lien"
+        data-room="lien"
+        hidden
+      >
+
+        <div class="room-shade"></div>
+
+
+        <div class="room-content">
+
+
+          <p class="room-eyebrow">
+            VEHICLE · LIEN
+          </p>
+
+
+          
+
+
+          <p class="room-copy">
+            Mechanical lien and tow lien
+            service requests for vehicle-related
+            situations.
+          </p>
+
+
+          <div class="room-tags">
+
+            <span>
+              Mechanical Lien
             </span>
 
-            <h3>
-              Dealer Center
-            </h3>
+            <span>
+              Tow Lien
+            </span>
 
-            <p>
-              A dedicated service center for automotive
-              professionals and dealer-related needs.
-            </p>
+          </div>
 
-            <ul>
-              <li>Dealer License</li>
-              <li>Mechanical License</li>
-              <li>Financial License</li>
-              <li>Business Registration</li>
-              <li>Rebuild Inspection</li>
-              <li>Dealer Class</li>
-            </ul>
 
-            <a href="dealer/index.html">
+          <div class="room-actions">
+
+            <a
+              class="room-button primary"
+              href="intake/lien.html"
+            >
+              Start Lien Request
+            </a>
+
+
+            <a
+              class="room-button secondary"
+              href="tel:+13054826302"
+            >
+              Call LB
+            </a>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==============================================
+           TAG ROOM
+           ============================================== -->
+
+      <section
+        class="lb-room room-tag"
+        data-room="tag"
+        hidden
+      >
+
+        <div class="room-shade"></div>
+
+
+        <div class="room-content">
+
+
+          <p class="room-eyebrow">
+            VEHICLE · TAG
+          </p>
+
+
+          <div class="tag-concept">
+            <small>
+              LB TITLE
+            </small>
+
+            <strong>
+              LB
+            </strong>
+
+            <span>
+              EST. 2014
+            </span>
+
+            <em>
+              PROMOTIONAL CONCEPT
+            </em>
+          </div>
+
+
+          
+
+
+          <div class="room-tags">
+
+            <span>
+              Transport Tag
+            </span>
+
+            <span>
+              Paper Tag
+            </span>
+
+            <span>
+              Tag Transfer
+            </span>
+
+          </div>
+
+
+          <div class="room-actions">
+
+            <a
+              class="room-button primary"
+              href="intake/tag.html"
+            >
+              Start Tag Request
+            </a>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==============================================
+           DEALER ROOM
+           ============================================== -->
+
+      <section
+        class="lb-room room-dealer"
+        data-room="dealer"
+        hidden
+      >
+
+        <div class="room-shade"></div>
+
+
+        <div class="room-content">
+
+
+          <p class="room-eyebrow">
+            BUSINESS · DEALER CENTER
+          </p>
+
+
+          
+
+
+          <p class="room-copy">
+            A dedicated service lane for
+            dealers and automotive professionals.
+          </p>
+
+
+          <div class="room-tags">
+
+            <span>
+              Dealer License
+            </span>
+
+            <span>
+              Business Registration
+            </span>
+
+            <span>
+              Rebuild Inspection
+            </span>
+
+            <span>
+              Dealer Class
+            </span>
+
+          </div>
+
+
+          <div class="room-actions">
+
+            <a
+              class="room-button primary"
+              href="dealer/index.html"
+            >
               Enter Dealer Center
             </a>
 
-          </article>
+          </div>
+
 
         </div>
 
-      </div>
-    </section>
+      </section>
 
 
-    <!-- OTHER SERVICES -->
-    <section
-      class="other-services"
-      id="other-services"
-    >
 
-      <div class="container">
+      <!-- ==============================================
+           VEHICLE CHECK ROOM
+           ============================================== -->
 
-        <div class="section-heading">
+      <section
+        class="lb-room room-vehicle-check"
+        data-room="vehicle-check"
+        hidden
+      >
 
-          <p class="eyebrow">
-            More From LB Title
+        <div class="room-shade"></div>
+
+
+        <div class="room-content">
+
+
+          <p class="room-eyebrow">
+            VEHICLE · CHECK
           </p>
 
-          <h2>
-            Other Services
-          </h2>
 
-          <p>
-            Need something outside our core service categories?
-            LB Title may still be able to help.
+          
+
+
+          <p class="room-copy">
+            LB is evaluating legitimate
+            vehicle-data providers before
+            activating this capability.
           </p>
+
+
+          <div class="room-status">
+            Provider integration not yet live.
+          </div>
+
+
+          <div class="room-actions">
+
+            <button
+              class="room-button secondary"
+              type="button"
+              data-room-target="home"
+            >
+              Back Home
+            </button>
+
+          </div>
+
 
         </div>
 
+      </section>
 
-        <div class="other-service-card">
 
-          <h3>
-            Buy Car With Lien Holder
-          </h3>
 
-          <p>
-            Contact LB Title to discuss this service
-            and your specific vehicle situation.
+      <!-- ==============================================
+           ABOUT ROOM
+           ============================================== -->
+
+      <section
+        class="lb-room room-about"
+        data-room="about"
+        hidden
+      >
+
+        <div class="room-shade"></div>
+
+
+        <div class="room-content">
+
+
+          <p class="room-eyebrow">
+            COMPANY
           </p>
 
-          <a href="#contact">
-            Contact LB Title
-          </a>
 
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- REQUEST -->
-    <section
-      class="request"
-      id="request"
-    >
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <p class="eyebrow">
-            Get Started
-          </p>
-
-          <h2>
-            Choose how you want to reach us.
-          </h2>
-
-          <p>
-            Call, text, submit a service request or
-            contact us about sending documents.
-          </p>
-
-        </div>
-
-
-        <div class="action-grid">
-
-          <!-- CALL -->
-          <a
-            class="action-card"
-            href="tel:+13054826302"
-          >
-
+          <h1>
+            About
             <span>
-              Call
+              LB Title.
             </span>
-
-            <strong>
-              (305) 482-6302
-            </strong>
-
-          </a>
+          </h1>
 
 
-          <!-- TEXT -->
-          <a
-            class="action-card"
-            href="sms:+13054826302"
-          >
+          <p class="room-copy">
+            Established in 2014, LB Title
+            helps vehicle owners and automotive
+            businesses navigate title, lien,
+            tag and related automotive paperwork.
+          </p>
 
+
+          <div class="room-actions">
+
+            <a
+              class="room-button primary"
+              href="tel:+13054826302"
+            >
+              Talk to LB
+            </a>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==============================================
+           REVIEWS ROOM
+           ============================================== -->
+
+      <section
+        class="lb-room room-reviews"
+        data-room="reviews"
+        hidden
+      >
+
+        <div class="room-shade"></div>
+
+
+        <div class="room-content">
+
+
+          <p class="room-eyebrow">
+            COMPANY · REVIEWS
+          </p>
+
+
+          <h1>
+            Customer
             <span>
-              Text
+              Reviews.
             </span>
-
-            <strong>
-              Message LB Title
-            </strong>
-
-          </a>
+          </h1>
 
 
-          <!-- REQUEST -->
-          <a
-            class="action-card"
-            href="#services"
-          >
+          <p class="room-copy">
+            Real customer reviews will appear
+            here as LB builds its verified
+            review history.
+          </p>
 
+
+          <div class="room-status">
+            No fabricated testimonials.
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==============================================
+           CONTACT ROOM
+           ============================================== -->
+
+      <section
+        class="lb-room room-contact"
+        data-room="contact"
+        hidden
+      >
+
+        <div class="room-shade"></div>
+
+
+        <div class="room-content">
+
+
+          <p class="room-eyebrow">
+            CONTACT LB TITLE
+          </p>
+
+
+          <h1>
+            Let's talk about
             <span>
-              Submit Request
+              what you need.
             </span>
-
-            <strong>
-              Choose Your Service
-            </strong>
-
-          </a>
+          </h1>
 
 
-          <!-- DOCUMENTS -->
-          <a
-            class="action-card"
-            href="mailto:lbtitle01@gmail.com"
-          >
-
-            <span>
-              Send Documents
-            </span>
-
-            <strong>
-              Email LB Title
-            </strong>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ASK LB -->
-    <section class="ask-lb">
-
-      <div class="container ask-lb-panel">
-
-        <div>
-
-          <p class="eyebrow">
-            Coming Soon
+          <p class="room-copy">
+            Call, text or email LB Title.
           </p>
 
-          <h2>
-            Ask LB
-          </h2>
 
-          <p>
-            Not sure which service you need?
-            Ask LB will help guide you to the right
-            LB Title service and request process.
-          </p>
+          <div class="room-actions">
+
+            <a
+              class="room-button primary"
+              href="tel:+13054826302"
+            >
+              Call (305) 482-6302
+            </a>
+
+
+            <a
+              class="room-button secondary"
+              href="sms:+13054826302"
+            >
+              Text LB
+            </a>
+
+
+            <a
+              class="room-button secondary"
+              href="mailto:lbtitle01@gmail.com"
+            >
+              Email LB
+            </a>
+
+          </div>
+
 
         </div>
 
-
-        <div class="ask-lb-status">
-
-          <span>
-            AI Assistance
-          </span>
-
-          <strong>
-            Coming Soon
-          </strong>
-
-        </div>
-
-      </div>
-
-    </section>
+      </section>
 
 
-    <!-- CONTACT -->
-    <section
-      class="contact-section"
-      id="contact"
-    >
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <p class="eyebrow">
-            Contact LB Title
-          </p>
-
-          <h2>
-            Let's talk about what you need.
-          </h2>
-
-          <p>
-            Reach LB Title by phone, text or email.
-          </p>
-
-        </div>
+    </main>
 
 
-        <div class="contact-actions">
-
-          <a
-            class="button primary"
-            href="tel:+13054826302"
-          >
-            Call (305) 482-6302
-          </a>
-
-
-          <a
-            class="button secondary"
-            href="sms:+13054826302"
-          >
-            Text LB Title
-          </a>
-
-
-          <a
-            class="button secondary"
-            href="mailto:lbtitle01@gmail.com"
-          >
-            lbtitle01@gmail.com
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-
-    <div class="container footer-content">
-
-      <div class="footer-brand">
-
-        <strong>
-          LB TITLE
-        </strong>
-
-        <p>
-          Automotive Services Made Simple
-        </p>
-
-      </div>
-
-
-      <div class="footer-contact">
-
-        <a href="tel:+13054826302">
-          (305) 482-6302
-        </a>
-
-        <a href="mailto:lbtitle01@gmail.com">
-          lbtitle01@gmail.com
-        </a>
-
-      </div>
-
-
-      <div class="powered-by">
-        Powered by
-        <strong>VALRYN OS</strong>
-      </div>
-
-    </div>
-
-  </footer>
+  </div>
 
 
   <script src="assets/js/main.js"></script>
 
+
 </body>
+
 </html>
