@@ -464,6 +464,38 @@ if (lbRoomShell) {
         "LB TITLE · EST. 2014"
       ]
 
+    },
+
+
+    tag: {
+
+      greeting(hour) {
+
+        if (hour < 12) {
+          return "Good morning. Let's get your tag request moving.";
+        }
+
+        if (hour < 17) {
+          return "Good afternoon. Tag help starts here.";
+        }
+
+        return "Good evening. Let's get your tag request started.";
+      },
+
+      messages: [
+        "Transport. Paper. Transfer.",
+        "The right tag for the road ahead.",
+        "Simple paperwork. Clear next steps.",
+        "Vehicle tag support without the guesswork.",
+        "Start here. We'll help with the next step.",
+        "Powered by VALRYN OS.",
+        {
+          text: "Make them ask how.",
+          signature: true
+        },
+        "LB TITLE · EST. 2014"
+      ]
+
     }
 
   };
