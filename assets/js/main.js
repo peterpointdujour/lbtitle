@@ -432,6 +432,38 @@ if (lbRoomShell) {
         "LB TITLE · EST. 2014"
       ]
 
+    },
+
+
+    lien: {
+
+      greeting(hour) {
+
+        if (hour < 12) {
+          return "Good morning. Let's get the lien paperwork moving.";
+        }
+
+        if (hour < 17) {
+          return "Good afternoon. Lien help starts here.";
+        }
+
+        return "Good evening. Let's get your next step clear.";
+      },
+
+      messages: [
+        "Mechanical liens. Tow liens. Clear next steps.",
+        "Documentation matters.",
+        "Resolve the paperwork. Keep things moving.",
+        "Clear records make the road ahead easier.",
+        "Vehicle lien support when you need it.",
+        "Powered by VALRYN OS.",
+        {
+          text: "Make them ask how.",
+          signature: true
+        },
+        "LB TITLE · EST. 2014"
+      ]
+
     }
 
   };

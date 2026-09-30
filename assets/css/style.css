@@ -5493,3 +5493,234 @@ background 0.22s ease,
 
 }
 
+
+
+/* =========================================================
+   LB SWEEP — LIEN ENVIRONMENTAL UI
+   ========================================================= */
+
+.room-lien .room-content {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  pointer-events: none;
+}
+
+
+/* ---------- AMBIENT MESSAGE ---------- */
+
+.room-lien .room-message {
+  position: absolute;
+
+  top: 24%;
+  left: 6%;
+
+  max-width: 450px;
+
+  padding: 14px 18px;
+
+  border-left: 2px solid #2f7df6;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 9, 11, 0.72),
+      rgba(8, 9, 11, 0.24),
+      transparent
+    );
+
+  opacity: 1;
+
+  transition:
+    opacity 1.1s ease,
+    transform 1.1s ease;
+}
+
+.room-lien .room-message.is-faded {
+  opacity: 0;
+
+  transform: translateY(-6px);
+}
+
+.room-lien .room-message .room-eyebrow {
+  margin: 0 0 8px;
+
+  color: #b7bac0;
+
+  font-size: 0.62rem;
+  letter-spacing: 3px;
+}
+
+.room-lien .room-dynamic-copy {
+  margin: 0;
+
+  color: #f1f1ef;
+
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+
+  line-height: 1.35;
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.room-lien .room-message.is-signature
+.room-dynamic-copy {
+  color: #f0d26a;
+
+  font-family:
+    "Snell Roundhand",
+    "Segoe Script",
+    "Brush Script MT",
+    cursive;
+
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 500;
+}
+
+
+/* ---------- LIEN SERVICES ---------- */
+
+.room-lien .room-tags {
+  position: absolute;
+
+  left: 12%;
+  bottom: 22%;
+
+  z-index: 4;
+
+  margin: 0;
+
+  pointer-events: auto;
+}
+
+
+/* ---------- LIEN WORKSTATION ACTIONS ---------- */
+
+.room-lien .room-actions {
+  position: absolute;
+
+  left: 12%;
+  bottom: 12%;
+
+  z-index: 5;
+
+  display: flex;
+
+  gap: 10px;
+
+  margin: 0;
+  padding: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+
+  background: rgba(10, 11, 13, 0.60);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.28);
+
+  pointer-events: auto;
+}
+
+.room-lien .room-button {
+  min-height: 44px;
+
+  padding: 0 18px;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 760px) {
+
+  .room-lien .room-content {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 110px 20px 28px;
+  }
+
+  .room-lien .room-message,
+  .room-lien .room-tags,
+  .room-lien .room-actions {
+    position: static;
+
+    max-width: 100%;
+  }
+
+  .room-lien .room-message {
+    margin-bottom: auto;
+  }
+
+  .room-lien .room-tags {
+    margin-top: 24px;
+  }
+
+  .room-lien .room-actions {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    margin-top: 14px;
+  }
+
+}
+
+/* =========================================================
+   LB SWEEP — LIEN CONTROL FINAL POSITION
+   Anchor controls to foreground Vehicle Lien desk
+   ========================================================= */
+
+@media (min-width: 761px) {
+
+  .room-lien .room-tags,
+  .room-lien .room-actions {
+    left: 30%;
+  }
+
+}
+
+
+/* LIEN FINAL VERTICAL ALIGNMENT */
+
+@media (min-width: 761px) {
+
+  .room-lien .room-tags {
+    bottom: 16%;
+  }
+
+  .room-lien .room-actions {
+    bottom: 6%;
+  }
+
+}
+
+
+/* LIEN FINAL DESK DROP */
+
+@media (min-width: 761px) {
+
+  .room-lien .room-tags {
+    bottom: 10%;
+  }
+
+  .room-lien .room-actions {
+    bottom: 1.5%;
+  }
+
+}
+
