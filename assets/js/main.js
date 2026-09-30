@@ -623,3 +623,216 @@ if (lbRoomShell) {
 
 }
 
+
+/* =========================================================
+   LB TITLE AMBIENT MESSAGE SYSTEM
+   ========================================================= */
+
+if (lbRoomShell) {
+
+  const titleMessage =
+    document.querySelector(
+      '[data-room-message="title"]'
+    );
+
+  const titleRoom =
+    document.querySelector(
+      '[data-room="title"]'
+    );
+
+  let titleMessageTimer = null;
+  let titleMessageIndex = 0;
+
+
+  function getTitleGreeting() {
+
+    const hour = new Date().getHours();
+
+    if (hour < 12) {
+      return "Good morning. Let's get the paperwork moving.";
+    }
+
+    if (hour < 17) {
+      return "Good afternoon. Title help starts here.";
+    }
+
+    return "Good evening. Let's get your next step clear.";
+
+  }
+
+
+  function getTitleMessages() {
+
+    return [
+      {
+        text: getTitleGreeting(),
+        signature: false
+      },
+      {
+        text: "Ownership starts with the right paperwork.",
+        signature: false
+      },
+      {
+        text: "Transfer. Replace. Rebuild.",
+        signature: false
+      },
+      {
+        text: "Clear paperwork. Clear next steps.",
+        signature: false
+      },
+      {
+        text: "Your vehicle. Your title. Handled.",
+        signature: false
+      },
+      {
+        text: "Powered by VALRYN OS.",
+        signature: false
+      },
+      {
+        text: "Make them ask how.",
+        signature: true
+      },
+      {
+        text: "LB TITLE · EST. 2014",
+        signature: false
+      }
+    ];
+
+  }
+
+
+  function titleIsActive() {
+
+    return Boolean(
+      titleRoom &&
+      !titleRoom.hidden &&
+      titleRoom.classList.contains("is-active")
+    );
+
+  }
+
+
+  function clearTitleTimer() {
+
+    if (titleMessageTimer) {
+      clearTimeout(titleMessageTimer);
+      titleMessageTimer = null;
+    }
+
+  }
+
+
+  function renderTitleMessage() {
+
+    if (!titleMessage || !titleIsActive()) {
+      clearTitleTimer();
+      return;
+    }
+
+    const messages = getTitleMessages();
+
+    const message =
+      messages[
+        titleMessageIndex % messages.length
+      ];
+
+    const copy =
+      titleMessage.querySelector(
+        ".room-dynamic-copy"
+      );
+
+    titleMessage.classList.add("is-faded");
+
+
+    titleMessageTimer =
+      setTimeout(() => {
+
+        if (!copy || !titleIsActive()) {
+          clearTitleTimer();
+          return;
+        }
+
+        copy.textContent = message.text;
+
+        titleMessage.classList.toggle(
+          "is-signature",
+          message.signature
+        );
+
+        titleMessage.classList.remove(
+          "is-faded"
+        );
+
+        titleMessageIndex =
+          (titleMessageIndex + 1) %
+          messages.length;
+
+        titleMessageTimer =
+          setTimeout(
+            renderTitleMessage,
+            14000
+          );
+
+      }, 900);
+
+  }
+
+
+  function startTitleMessages() {
+
+    clearTitleTimer();
+
+    titleMessageIndex = 0;
+
+    if (!titleMessage) {
+      return;
+    }
+
+    const copy =
+      titleMessage.querySelector(
+        ".room-dynamic-copy"
+      );
+
+    const first =
+      getTitleMessages()[0];
+
+    if (copy) {
+      copy.textContent = first.text;
+    }
+
+    titleMessage.classList.remove(
+      "is-signature",
+      "is-faded"
+    );
+
+    titleMessageIndex = 1;
+
+    titleMessageTimer =
+      setTimeout(
+        renderTitleMessage,
+        14000
+      );
+
+  }
+
+
+  document
+    .querySelectorAll(
+      '[data-room-target="title"]'
+    )
+    .forEach((button) => {
+
+      button.addEventListener(
+        "click",
+        startTitleMessages
+      );
+
+    });
+
+
+  if (window.location.hash === "#title") {
+    startTitleMessages();
+  }
+
+}
+

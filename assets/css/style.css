@@ -5332,3 +5332,164 @@ background 0.22s ease,
 
 }
 
+
+/* =========================================================
+   LB SWEEP — TITLE ENVIRONMENTAL UI
+   ========================================================= */
+
+.room-title .room-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.room-title .room-message {
+  position: absolute;
+  top: 24%;
+  left: 6%;
+  max-width: 430px;
+  padding: 14px 18px;
+  border-left: 2px solid #2f7df6;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 9, 11, 0.72),
+      rgba(8, 9, 11, 0.24),
+      transparent
+    );
+  opacity: 1;
+  transition:
+    opacity 1.1s ease,
+    transform 1.1s ease;
+}
+
+.room-title .room-message.is-faded {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.room-title .room-message .room-eyebrow {
+  margin: 0 0 8px;
+  color: #b7bac0;
+  font-size: 0.62rem;
+  letter-spacing: 3px;
+}
+
+.room-title .room-dynamic-copy {
+  margin: 0;
+  color: #f1f1ef;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.35;
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.room-title .room-message.is-signature
+.room-dynamic-copy {
+  color: #f0d26a;
+  font-family:
+    "Snell Roundhand",
+    "Segoe Script",
+    "Brush Script MT",
+    cursive;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 500;
+}
+
+/* Service labels remain permanently visible. */
+
+.room-title .room-tags {
+  position: absolute;
+  left: 6%;
+  bottom: 22%;
+  z-index: 4;
+  margin: 0;
+  pointer-events: auto;
+}
+
+/* Functional controls live on the foreground desk. */
+
+.room-title .room-actions {
+  position: absolute;
+  left: 6%;
+  bottom: 12%;
+  z-index: 5;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  background: rgba(10, 11, 13, 0.60);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.28);
+  pointer-events: auto;
+}
+
+.room-title .room-button {
+  min-height: 44px;
+  padding: 0 18px;
+}
+
+@media (max-width: 760px) {
+
+  .room-title .room-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 110px 20px 28px;
+  }
+
+  .room-title .room-message,
+  .room-title .room-tags,
+  .room-title .room-actions {
+    position: static;
+    max-width: 100%;
+  }
+
+  .room-title .room-message {
+    margin-bottom: auto;
+  }
+
+  .room-title .room-tags {
+    margin-top: 24px;
+  }
+
+  .room-title .room-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 14px;
+  }
+
+}
+
+
+/* =========================================================
+   LB SWEEP — TITLE CONTROL FINAL POSITION
+   Set service controls into foreground workspace
+   ========================================================= */
+
+@media (min-width: 761px) {
+
+  .room-title .room-tags,
+  .room-title .room-actions {
+    left: 12%;
+  }
+
+  .lb-app.is-sidebar-collapsed
+  .room-title .room-tags,
+  .lb-app.is-sidebar-collapsed
+  .room-title .room-actions {
+    left: 12%;
+  }
+
+}
+
