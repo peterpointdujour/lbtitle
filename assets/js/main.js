@@ -592,6 +592,38 @@ if (lbRoomShell) {
         "LB TITLE · EST. 2014"
       ]
 
+    },
+
+
+    reviews: {
+
+      greeting(hour) {
+
+        if (hour < 12) {
+          return "Good morning. Real feedback is earned over time.";
+        }
+
+        if (hour < 17) {
+          return "Good afternoon. Real feedback is earned over time.";
+        }
+
+        return "Good evening. Real feedback is earned over time.";
+      },
+
+      messages: [
+        "Real customers. Real experiences.",
+        "Verified reviews will appear as they are collected.",
+        "Trust is built, not fabricated.",
+        "Feedback helps us improve.",
+        "Service first. Reputation follows.",
+        "Powered by VALRYN OS.",
+        {
+          text: "Make them ask how.",
+          signature: true
+        },
+        "LB TITLE · EST. 2014"
+      ]
+
     }
 
   };
