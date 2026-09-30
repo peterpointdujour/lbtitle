@@ -373,6 +373,38 @@ if (lbRoomShell) {
 
   const ambientRooms = {
 
+    home: {
+
+      greeting(hour) {
+
+        if (hour < 12) {
+          return "Good morning. Welcome to LB Title.";
+        }
+
+        if (hour < 17) {
+          return "Good afternoon. Welcome to LB Title.";
+        }
+
+        return "Good evening. Welcome to LB Title.";
+      },
+
+      messages: [
+        "Your automotive paperwork. Handled.",
+        "Title. Lien. Tag. Dealer support.",
+        "Built for vehicle owners and automotive professionals.",
+        "Clear next steps start here.",
+        "Serving automotive needs since 2014.",
+        "Powered by VALRYN OS.",
+        {
+          text: "Make them ask how.",
+          signature: true
+        },
+        "LB TITLE · EST. 2014"
+      ]
+
+    },
+
+
     contact: {
 
       greeting(hour) {
