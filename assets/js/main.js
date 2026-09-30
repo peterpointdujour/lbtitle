@@ -560,6 +560,38 @@ if (lbRoomShell) {
         "LB TITLE · EST. 2014"
       ]
 
+    },
+
+
+    about: {
+
+      greeting(hour) {
+
+        if (hour < 12) {
+          return "Good morning. Welcome to LB Title.";
+        }
+
+        if (hour < 17) {
+          return "Good afternoon. Welcome to LB Title.";
+        }
+
+        return "Good evening. Welcome to LB Title.";
+      },
+
+      messages: [
+        "Serving automotive needs since 2014.",
+        "People. Vehicles. Solutions.",
+        "A smoother road starts with clear support.",
+        "Built around service and straightforward next steps.",
+        "Title. Lien. Tag. Dealer support.",
+        "Powered by VALRYN OS.",
+        {
+          text: "Make them ask how.",
+          signature: true
+        },
+        "LB TITLE · EST. 2014"
+      ]
+
     }
 
   };
