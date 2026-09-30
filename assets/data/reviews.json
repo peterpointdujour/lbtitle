@@ -1,4 +1,12 @@
 {
   "version": 1,
-  "reviews": []
+  "reviews": [
+    {
+      "name": "peter test",
+      "service": "Title",
+      "rating": 5,
+      "review": "TEST ONLY — testing the LB approved review publishing workflow.",
+      "approved": true
+    }
+  ]
 }
