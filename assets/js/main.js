@@ -496,6 +496,38 @@ if (lbRoomShell) {
         "LB TITLE · EST. 2014"
       ]
 
+    },
+
+
+    dealer: {
+
+      greeting(hour) {
+
+        if (hour < 12) {
+          return "Good morning. Dealer support starts here.";
+        }
+
+        if (hour < 17) {
+          return "Good afternoon. Dealer support starts here.";
+        }
+
+        return "Good evening. Dealer support starts here.";
+      },
+
+      messages: [
+        "Built for automotive professionals.",
+        "Business moves faster with clear next steps.",
+        "Licensing. Registration. Inspections. Support.",
+        "A dedicated service lane for your business.",
+        "Your business. One service lane.",
+        "Powered by VALRYN OS.",
+        {
+          text: "Make them ask how.",
+          signature: true
+        },
+        "LB TITLE · EST. 2014"
+      ]
+
     }
 
   };
