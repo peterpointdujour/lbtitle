@@ -528,6 +528,38 @@ if (lbRoomShell) {
         "LB TITLE · EST. 2014"
       ]
 
+    },
+
+
+    "vehicle-check": {
+
+      greeting(hour) {
+
+        if (hour < 12) {
+          return "Good morning. Vehicle intelligence is being prepared.";
+        }
+
+        if (hour < 17) {
+          return "Good afternoon. Vehicle intelligence is being prepared.";
+        }
+
+        return "Good evening. Vehicle intelligence is being prepared.";
+      },
+
+      messages: [
+        "Verify before you rely.",
+        "Better data. Better decisions.",
+        "Vehicle-data capability is planned.",
+        "Provider integration is not yet live.",
+        "We activate data services only when the source is ready.",
+        "Powered by VALRYN OS.",
+        {
+          text: "Make them ask how.",
+          signature: true
+        },
+        "LB TITLE · EST. 2014"
+      ]
+
     }
 
   };
