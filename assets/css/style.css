@@ -6792,3 +6792,188 @@ background 0.22s ease,
   display: none;
 }
 
+
+
+/* =========================================================
+   LB REVIEW SUBMISSION UI
+   ========================================================= */
+
+
+/* ---------- REVIEWS ROOM CONTROLS ---------- */
+
+.room-reviews .review-room-controls {
+  position: absolute;
+
+  left: 20%;
+  bottom: 5%;
+
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  pointer-events: auto;
+}
+
+.room-reviews .review-room-controls .room-status {
+  position: static;
+
+  margin: 0;
+}
+
+.room-reviews .review-action {
+  min-height: 46px;
+
+  white-space: nowrap;
+}
+
+
+/* ---------- REVIEW RATING ---------- */
+
+.review-rating-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.review-rating-grid label {
+  position: relative;
+
+  cursor: pointer;
+}
+
+.review-rating-grid input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.review-rating-grid span {
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #273449;
+  border-radius: 9px;
+
+  background: rgba(15, 23, 42, 0.6);
+
+  color: #cbd5e1;
+
+  font-weight: 800;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.review-rating-grid label:hover span {
+  border-color: #3b82f6;
+
+  transform: translateY(-2px);
+}
+
+.review-rating-grid input:checked + span {
+  border-color: #3b82f6;
+
+  background: rgba(37, 99, 235, 0.14);
+
+  color: #ffffff;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(59, 130, 246, 0.18);
+}
+
+
+/* ---------- PUBLICATION PERMISSION ---------- */
+
+.review-consent {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 13px;
+
+  cursor: pointer;
+}
+
+.review-consent input {
+  width: 18px;
+  height: 18px;
+
+  flex: 0 0 auto;
+
+  margin-top: 3px;
+
+  accent-color: #2563eb;
+}
+
+.review-consent span {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.review-consent strong {
+  color: #ffffff;
+
+  font-size: 0.92rem;
+}
+
+.review-consent small {
+  max-width: 620px;
+
+  color: #64748b;
+
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 760px) {
+
+  .room-reviews .review-room-controls {
+    position: static;
+
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    margin-top: 24px;
+  }
+
+  .room-reviews .review-action {
+    width: 100%;
+  }
+
+  .review-rating-grid {
+    grid-template-columns:
+      repeat(5, minmax(48px, 1fr));
+  }
+
+}
+
+@media (max-width: 520px) {
+
+  .review-rating-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+
