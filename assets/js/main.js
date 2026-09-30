@@ -933,3 +933,261 @@ if (lbRoomShell) {
 
 }
 
+
+
+/* =========================================================
+   LB APPROVED REVIEW DISPLAY
+   Public source: assets/data/reviews.json
+   ========================================================= */
+
+(() => {
+
+  const reviewRegion =
+    document.querySelector("#approved-reviews");
+
+  const reviewList =
+    document.querySelector("#approved-reviews-list");
+
+
+  if (!reviewRegion || !reviewList) {
+    return;
+  }
+
+
+  const allowedServices =
+    new Set([
+      "Title",
+      "Lien",
+      "Tag",
+      "Dealer",
+      "Other"
+    ]);
+
+
+  function validReview(review) {
+
+    if (
+      !review
+      || typeof review !== "object"
+    ) {
+      return false;
+    }
+
+
+    if (
+      typeof review.name !== "string"
+      || !review.name.trim()
+    ) {
+      return false;
+    }
+
+
+    if (
+      typeof review.service !== "string"
+      || !allowedServices.has(
+        review.service
+      )
+    ) {
+      return false;
+    }
+
+
+    if (
+      !Number.isInteger(review.rating)
+      || review.rating < 1
+      || review.rating > 5
+    ) {
+      return false;
+    }
+
+
+    if (
+      typeof review.review !== "string"
+      || !review.review.trim()
+    ) {
+      return false;
+    }
+
+
+    if (
+      review.approved !== true
+    ) {
+      return false;
+    }
+
+
+    return true;
+  }
+
+
+  function makeElement(
+    tag,
+    className,
+    text
+  ) {
+
+    const element =
+      document.createElement(tag);
+
+    if (className) {
+      element.className = className;
+    }
+
+    if (text !== undefined) {
+      element.textContent = text;
+    }
+
+    return element;
+  }
+
+
+  function buildReviewCard(review) {
+
+    const card =
+      makeElement(
+        "article",
+        "approved-review-card"
+      );
+
+
+    const rating =
+      makeElement(
+        "div",
+        "approved-review-rating",
+        "★".repeat(review.rating)
+      );
+
+    rating.setAttribute(
+      "aria-label",
+      `${review.rating} out of 5 stars`
+    );
+
+
+    const quote =
+      makeElement(
+        "blockquote",
+        "approved-review-quote",
+        review.review.trim()
+      );
+
+
+    const footer =
+      makeElement(
+        "footer",
+        "approved-review-meta"
+      );
+
+
+    const name =
+      makeElement(
+        "strong",
+        "",
+        review.name.trim()
+      );
+
+
+    const service =
+      makeElement(
+        "span",
+        "",
+        `${review.service} Service`
+      );
+
+
+    footer.append(
+      name,
+      service
+    );
+
+
+    card.append(
+      rating,
+      quote,
+      footer
+    );
+
+
+    return card;
+  }
+
+
+  async function loadApprovedReviews() {
+
+    try {
+
+      const response =
+        await fetch(
+          "assets/data/reviews.json",
+          {
+            cache: "no-store"
+          }
+        );
+
+
+      if (!response.ok) {
+        return;
+      }
+
+
+      const payload =
+        await response.json();
+
+
+      if (
+        !payload
+        || payload.version !== 1
+        || !Array.isArray(payload.reviews)
+      ) {
+        return;
+      }
+
+
+      const approved =
+        payload.reviews.filter(
+          validReview
+        );
+
+
+      if (!approved.length) {
+        return;
+      }
+
+
+      const fragment =
+        document.createDocumentFragment();
+
+
+      approved.forEach((review) => {
+
+        fragment.appendChild(
+          buildReviewCard(review)
+        );
+
+      });
+
+
+      reviewList.replaceChildren(
+        fragment
+      );
+
+
+      reviewRegion.hidden = false;
+
+    } catch (error) {
+
+      /*
+       * Fail closed.
+       *
+       * Review display is optional public content.
+       * A loading/parsing failure must not affect
+       * the rest of the LB Title experience.
+       */
+
+    }
+
+  }
+
+
+  loadApprovedReviews();
+
+})();
