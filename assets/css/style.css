@@ -7121,3 +7121,42 @@ background 0.22s ease,
 }
 
 
+
+
+/* =========================================================
+   LB AMBIENT REVIEW ROTATION
+   ========================================================= */
+
+.room-reviews .approved-reviews-list {
+  opacity: 1;
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.room-reviews .approved-reviews-list.is-fading {
+  opacity: 0;
+
+  transform: translateY(-5px);
+}
+
+
+/* Reduced-motion users keep the content swap,
+   but do not receive the fade animation. */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .room-reviews .approved-reviews-list {
+    transition: none;
+  }
+
+  .room-reviews .approved-reviews-list.is-fading {
+    opacity: 1;
+
+    transform: none;
+  }
+
+}
+
+

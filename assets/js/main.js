@@ -182,6 +182,18 @@ if (lbRoomShell) {
       );
     }
 
+
+    document.dispatchEvent(
+      new CustomEvent(
+        "lb:roomchange",
+        {
+          detail: {
+            roomName
+          }
+        }
+      )
+    );
+
   }
 
 
@@ -1153,25 +1165,154 @@ if (lbRoomShell) {
       }
 
 
-      const fragment =
-        document.createDocumentFragment();
+      let currentIndex = 0;
+      let rotationTimer = null;
+
+      const rotationDelay = 9000;
+
+      const reduceMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        );
 
 
-      approved.forEach((review) => {
+      function reviewsRoomIsActive() {
 
-        fragment.appendChild(
+        const room =
+          document.querySelector(
+            '[data-room="reviews"]'
+          );
+
+        return Boolean(
+          room
+          && !room.hidden
+          && room.classList.contains(
+            "is-active"
+          )
+        );
+
+      }
+
+
+      function renderCurrentReview() {
+
+        const review =
+          approved[currentIndex];
+
+        if (!review) {
+          return;
+        }
+
+        reviewList.replaceChildren(
           buildReviewCard(review)
         );
 
-      });
+      }
 
 
-      reviewList.replaceChildren(
-        fragment
+      function clearRotationTimer() {
+
+        if (rotationTimer) {
+          clearTimeout(rotationTimer);
+          rotationTimer = null;
+        }
+
+      }
+
+
+      function scheduleRotation() {
+
+        clearRotationTimer();
+
+        if (
+          approved.length <= 1
+          || !reviewsRoomIsActive()
+        ) {
+          return;
+        }
+
+        rotationTimer =
+          setTimeout(
+            rotateReview,
+            rotationDelay
+          );
+
+      }
+
+
+      function rotateReview() {
+
+        clearRotationTimer();
+
+        if (
+          approved.length <= 1
+          || !reviewsRoomIsActive()
+        ) {
+          return;
+        }
+
+        currentIndex =
+          (currentIndex + 1)
+          % approved.length;
+
+
+        if (reduceMotion.matches) {
+
+          renderCurrentReview();
+          scheduleRotation();
+
+          return;
+
+        }
+
+
+        reviewList.classList.add(
+          "is-fading"
+        );
+
+
+        setTimeout(() => {
+
+          renderCurrentReview();
+
+          reviewList.classList.remove(
+            "is-fading"
+          );
+
+          scheduleRotation();
+
+        }, 550);
+
+      }
+
+
+      document.addEventListener(
+        "lb:roomchange",
+        (event) => {
+
+          const roomName =
+            event.detail?.roomName;
+
+
+          if (roomName === "reviews") {
+
+            scheduleRotation();
+
+            return;
+          }
+
+
+          clearRotationTimer();
+
+        }
       );
 
 
+      renderCurrentReview();
+
       reviewRegion.hidden = false;
+
+      scheduleRotation();
 
     } catch (error) {
 
