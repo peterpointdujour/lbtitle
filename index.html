@@ -24,6 +24,7 @@
     href="assets/css/style.css"
   >
 
+  <link rel="stylesheet" href="assets/css/vehicles.css">
 </head>
 
 
@@ -104,6 +105,9 @@
         </div>
 
 
+        <div class="lb-nav-group">
+          <button class="lb-room-link" type="button" data-room-target="vehicles">Vehicles</button>
+        </div>
         <!-- VEHICLE -->
 
         <div class="lb-nav-group">
@@ -300,7 +304,7 @@
               Text LB
             </a>
 
-          </div
+          </div>
 
 
         </div>
@@ -824,6 +828,17 @@
       </section>
 
 
+      <section class="lb-room room-vehicles" data-room="vehicles" hidden>
+        <div class="vehicle-room-content">
+          <h1>Vehicles</h1>
+          <p>All inquiries go through Low Budget Auto Sale. Call to confirm availability. No reservation or purchase guarantee.</p>
+          <div class="vehicle-actions"><a href="tel:+13054826302">Call LB</a><a href="sms:+13054826302">Text LB</a><button id="vehicle-refresh" type="button">Refresh inventory</button></div>
+          <p id="vehicle-state" role="status" aria-live="polite">Loading inventory…</p>
+          <div id="vehicle-grid" class="vehicle-grid"></div>
+          <section id="vehicle-detail" class="vehicle-detail" aria-label="Vehicle details" hidden></section>
+          <section id="vehicle-local" hidden><p class="vehicle-local-note">LOCAL SYNTHETIC TEST ONLY. No real vehicles, personal data or documents. Community listing and finding services are not activated.</p><div class="vehicle-actions"><button id="open-finding" type="button">Find Me a Car — local test</button><button id="open-community" type="button">Sell Your Car — local test</button></div><div id="vehicle-request"></div></section>
+        </div>
+      </section>
     </main>
 
 
@@ -831,6 +846,7 @@
 
 
   <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/vehicles.mjs"></script>
 
 
 </body>

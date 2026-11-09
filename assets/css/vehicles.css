@@ -1,0 +1,20 @@
+.room-vehicles { background:#10151b; overflow-y:auto; }
+.vehicle-room-content { width:100%; max-width:1100px; padding:clamp(1rem,3vw,2rem); margin:auto; }
+.vehicle-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr)); gap:1rem; }
+.vehicle-card,.vehicle-detail,.vehicle-form { background:#18222c; border:1px solid #65727f; padding:1rem; border-radius:12px; color:#fff; }
+.vehicle-card img,.vehicle-detail img { width:100%; max-height:340px; object-fit:contain; background:#080b10; }
+.vehicle-actions { display:flex; flex-wrap:wrap; gap:.6rem; margin:1rem 0; }
+.vehicle-actions button,.vehicle-actions a,.vehicle-form button { min-height:44px; padding:.6rem 1rem; border-radius:6px; color:#fff; background:#26384a; border:1px solid #9db0c0; text-decoration:none; cursor:pointer; }
+.vehicle-actions :focus-visible,.vehicle-form :focus-visible { outline:3px solid #f7bc64; outline-offset:3px; }
+.vehicle-form { margin-block:1rem; }
+.vehicle-form label { display:block; margin:.7rem 0; }
+.vehicle-form input:not([type=checkbox]),.vehicle-form textarea,.vehicle-form select { display:block; width:100%; box-sizing:border-box; padding:.65rem; font:inherit; }
+.vehicle-form textarea { min-height:90px; }
+.vehicle-form [type=checkbox] { width:1.2rem; height:1.2rem; }
+.vehicle-local-note { padding:.75rem; border:1px solid #d7ad52; }
+.home-showroom { position:absolute; inset:0; background-position:center; background-size:cover; }
+.showroom-panel { position:absolute; bottom:1.5rem; right:1.5rem; max-width:min(420px,calc(100% - 3rem)); padding:1rem; background:rgba(8,14,21,.92); color:#fff; border:1px solid #8291a0; border-radius:12px; }
+.room-home:has(.home-showroom:not([hidden])) > .room-content { visibility:hidden; pointer-events:none; }
+.home-showroom[hidden],.vehicle-detail[hidden],.vehicle-form[hidden] { display:none; }
+@media(max-width:600px) { .showroom-panel { bottom:.75rem;right:.75rem;max-width:calc(100% - 1.5rem);padding:.75rem; } .showroom-panel h2 { font-size:1.1rem; } }
+@media(prefers-reduced-motion:reduce) { .home-showroom { transition:none; } }
